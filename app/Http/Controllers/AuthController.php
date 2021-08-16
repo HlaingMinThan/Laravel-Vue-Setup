@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller
 {
     /**
@@ -45,7 +43,11 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return response()->json(auth()->user());
+        $user = auth()->user();
+        return response()->json([
+            'status' => 'success',
+            'data' => $user,
+        ]);
     }
 
     /**
